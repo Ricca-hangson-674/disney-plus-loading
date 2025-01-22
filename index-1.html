@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loader Disney+</title>
+    <style>
+        /* Styles de base pour le body */
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a1a1a;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Conteneur principal du loader */
+        .loader-container {
+            text-align: center;
+            width: 250px;
+        }
+
+        /* Animation des cercles */
+        .loader-logo {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #1db954;
+            animation: bounce 1.2s infinite ease-in-out;
+        }
+
+        .circle:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .circle:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .circle:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+
+        /* Animation de rebond pour les cercles */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Barre de progression */
+        .progress-bar {
+            width: 100%;
+            background-color: #555;
+            height: 6px;
+            border-radius: 50px;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background-color: #1db954;
+            border-radius: 50px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="loader-container">
+        <div class="loader-logo">
+            <div class="circle"></div>
+            <div class="circle"></div>
+            <div class="circle"></div>
+        </div>
+        <div class="progress-bar">
+            <div class="progress"></div>
+        </div>
+    </div>
+
+    <script>
+        (function () {
+            // Script pour animer la barre de progression
+            let progress = document.querySelector('.progress');
+            let width = 0;
+
+            function animateProgress() {
+                if (width < 100) {
+                    width++;
+                    progress.style.width = width + '%';
+                } else {
+                    clearInterval(interval);
+                }
+            }
+
+            let interval = setInterval(animateProgress, 50); // Augmente la vitesse de la progression
+
+        })()
+    </script>
+</body>
+</html>
